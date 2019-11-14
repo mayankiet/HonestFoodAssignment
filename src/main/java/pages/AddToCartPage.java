@@ -1,9 +1,11 @@
 package pages;
 
+import constants.Brands;
 import drivers.DriverProvider;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class AddToCartPage extends BasePage{
 
@@ -22,9 +24,24 @@ public class AddToCartPage extends BasePage{
     @FindBy(id = "topup-modal--close")
     private WebElement addToCart;
 
+    @FindBy(css = ".cart--item")
+    private WebElement itemInCart;
+
+    @FindBy(css = ".logo--shop.block")
+    private WebElement logo;
+
+
     public AddToCartPage(){
         driver = DriverProvider.getDriver();
         PageFactory.initElements(driver, this);
+    }
+
+    public void verifyLogoIsDisplaying(){
+        Assert.assertTrue(logo.isDisplayed(), "logo is not displaying");
+    }
+
+    public void verifyMamaCitaBrandIsAvailable(){
+        Assert.assertTrue(mamatica.isDisplayed(), "mamatica brand is not available");
     }
 
     public void clickOnMamaCita(){
@@ -40,5 +57,14 @@ public class AddToCartPage extends BasePage{
         wait(5000);
         product.click();
         addToCart.click();
+    }
+
+    public void verifyItemIsAddedToCart(){
+        Assert.assertTrue(itemInCart.isDisplayed(), "item is not added to cart");
+    }
+
+    public void verifyUserNavigateToMamaCitaBrandPage(){
+        String currentUrl = getCurrentUrl();
+        Assert.assertTrue(currentUrl.toLowerCase().contains(Brands.BRANDS.toLowerCase()), "user is not navigate to desired brand");
     }
 }
