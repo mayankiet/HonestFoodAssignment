@@ -12,4 +12,6 @@ Pre-requisites:
 4.) Rebuild the project on your machine.
 
 
-Tech stack in Framework :- Java, Selenium, Gradle, TestNG, inteliJ, 
+Tech stack in Framework :- Java, Selenium, Gradle, TestNG, inteliJ IDE.
+
+Framework Structure :- I'm using POM design pattern in order to implement this framework.
