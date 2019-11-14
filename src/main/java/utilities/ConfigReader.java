@@ -11,7 +11,7 @@ public class ConfigReader {
      public  Properties properties = new Properties();
 
     public ConfigReader() throws IOException {
-        File file = new File("/Users/admin/Developments/HonestFoodAutomation/src/main/resources/config.Properties");
+        File file = new File("config.Properties");
 
         InputStream fileInputStream = new FileInputStream(file);
         properties.load(fileInputStream);
